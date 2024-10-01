@@ -40,4 +40,4 @@ To set up the project locally, follow these steps:
 1. **Clone the repository**:
 
    ```bash
-   git clone https://github.com/yourusername/task-management-app.git
+   git clone https://github.com/saksham-koul-2003/Do-It.git
