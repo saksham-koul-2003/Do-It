@@ -1,0 +1,89 @@
+.task-list {
+    flex: 1;
+    padding-right: 20px;
+    padding-left: 20px;
+  }
+  
+  .add-task {
+    margin-bottom: 20px;
+  }
+  
+  .add-task input {
+    flex: 1;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    margin-right: 10px;
+  }
+  
+  .add-task-btn {
+    padding: 10px 20px;
+    background-color: #68b684;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+  }
+  
+  .tasks {
+    list-style: none;
+    padding: 0;
+  }
+  
+  .tasks li {
+    display: flex;
+    align-items: center;
+    padding: 10px 0;
+    border-bottom: 1px solid #e0e0e0;
+  }
+  
+  /* Completed tasks */
+  .tasks li.completed {
+    text-decoration: line-through;
+    color: #888;
+  }
+  
+  /* Important task marker */
+  .important-task {
+    margin-left: auto;
+    color: red;
+  }
+  
+  /* Button to mark/unmark importance */
+  .important-btn {
+    margin-left: 10px;
+    padding: 5px 10px;
+    background-color: #ffcc00;
+    color: black;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    width: auto;
+  }
+  
+  /* Delete button */
+  .delete-btn {
+    margin-left: 10px;
+    padding: 5px 10px;
+    background-color: red;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    width: auto;
+  }
+  .task-list {
+    width: 200px;
+  }
+  .edit-btn,
+  .save-btn {
+    margin-left: 10px;
+    padding: 5px 10px;
+    background-color: blueviolet;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    width: auto;
+  }
+  

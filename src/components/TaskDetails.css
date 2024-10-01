@@ -1,0 +1,28 @@
+/* Base styles for .task-details */
+.task-details {
+  width: 250px;
+  background-color: #e9f3ec;
+  padding: 20px;
+}
+
+/* Mobile styles */
+@media (max-width: 768px) {
+  .task-details {
+    width: 100%; /* Full width on mobile */
+    padding: 10px; /* Adjust padding if needed */
+  }
+}
+
+.details-options {
+  list-style: none;
+  padding: 0;
+}
+
+.details-options li {
+  padding: 10px 0;
+  cursor: pointer;
+}
+
+.details-options li:hover {
+  color: #68b684;
+}

@@ -1,0 +1,105 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: Arial, sans-serif;
+}
+
+.app-container {
+  display: flex;
+  height: 100vh;
+}
+
+.main-content {
+  display: flex;
+  flex: 1;
+  padding: 20px;
+  background-color: #f4f4f4;
+}
+
+@media (max-width: 768px) {
+  .main-content {
+    display: block;
+    flex: 1;
+    padding: 20px;
+    background-color: #f4f4f4;
+  }
+}
+
+
+.app-container {
+  transition: background-color 0.3s, color 0.3s;
+}
+
+.light {
+  background-color: white;
+  color: black;
+}
+
+.dark {
+  background-color: black;
+  color: white;
+}
+
+/* Additional styles to make sure other components match the theme */
+.sidebar {
+  background-color: white; /* Default */
+  color: black; /* Default */
+  /* Additional styles */
+}
+
+.dark .sidebar {
+  background-color: #1e1e1e; /* Dark background */
+  color: white; /* Light text */
+}
+
+.task-list {
+  background-color: white; /* Default */
+  color: black; /* Default */
+  /* padding: 2%; */
+  margin-left: 12px;
+  margin-right: 12px;
+  border-radius: 1%;
+}
+
+.dark .task-list {
+  background-color: #1e1e1e; /* Dark background */
+  color: white; /* Light text */
+}
+
+.task-details{
+  background-color: white; /* Default */
+  color: black; /* Default */
+  /* padding: 2%; */
+  /* margin-left: 12px;
+  border-radius: 1%; */
+  border-radius: 1%;
+
+}
+
+.dark .task-details{
+  background-color: #1e1e1e; /* Dark background */
+  color: white; /* Light text */
+}
+
+
+
+/* Add similar rules for other components like TaskList, TaskDetails, etc. */
+
+/* App.css */
+.app-container.light {
+  background-color: white;
+  color: black;
+}
+
+.app-container.dark {
+  background-color: #333;
+  color: white;
+}
+
+.head{
+  margin-bottom: 80px;
+}
