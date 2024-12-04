@@ -98,6 +98,7 @@ function App() {
               {currentView === "all" && <TaskList />}
               {currentView === "today" && <TodayTask />}
               <TaskDetails />
+              
             </>
           ) : (
             <Login />
