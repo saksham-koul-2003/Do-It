@@ -1,4 +1,3 @@
-// src/components/TaskList.js
 import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import {
@@ -10,31 +9,30 @@ import {
 } from "../redux/actions/taskActions";
 import "./TaskList.css";
 
-function TodayTask() {
-
+function TaskList() {
   const [newTask, setNewTask] = useState("");
   const [editingIndex, setEditingIndex] = useState(null);
   const [editingText, setEditingText] = useState("");
   const dispatch = useDispatch();
-  const tasks = useSelector((state) => state.tasks?.tasks || []);
+  const tasks = useSelector((state) => state.tasks.tasks);
 
-  // Load tasks from localStorage when the component mounts
+  // Load tasks from localStorage only once when the component mounts
   useEffect(() => {
     const savedTasks = localStorage.getItem("tasks");
     if (savedTasks) {
       const parsedTasks = JSON.parse(savedTasks);
-      parsedTasks.forEach((task) => {
-        const taskExists = tasks.some((t) => t.text === task.text);
-        if (!taskExists) {
-          dispatch(addTask(task));
-        }
-      });
+      // Only initialize if the current state is empty
+      if (tasks.length === 0) {
+        dispatch({ type: "INIT_TASKS", payload: parsedTasks });
+      }
     }
-  }, [dispatch, tasks]);
+  }, [dispatch, tasks.length]);
 
   // Save tasks to localStorage whenever tasks change
   useEffect(() => {
-    localStorage.setItem("tasks", JSON.stringify(tasks));
+    if (tasks.length > 0) {
+      localStorage.setItem("tasks", JSON.stringify(tasks));
+    }
   }, [tasks]);
 
   // Function to add a new task
@@ -74,12 +72,12 @@ function TodayTask() {
 
   // Function to toggle favorite status
   const handleToggleFavorite = (index) => {
-    dispatch(toggleFavorite(index)); // Dispatch toggleFavorite action
+    dispatch(toggleFavorite(index));
   };
 
   return (
     <div className="task-list">
-      <h2>Today List</h2>
+      <h2>To Do List</h2>
       <div className="add-task">
         <input
           type="text"
@@ -105,36 +103,33 @@ function TodayTask() {
               <p className="task-list">{task.text}</p>
             )}
             <div className="task-buttons">
-              {/* {editingIndex === index ? (
-                                <button className="save-btn" onClick={() => handleSaveEdit(index)}>
-                                    Save
-                                </button>
-                            ) : (
-                                <button className="edit-btn" onClick={() => handleEditTask(index)}>
-                                    Edit
-                                </button>
-                            )} */}
-              {/* <button
-                                className="important-btn"
-                                onClick={() => handleToggleComplete(index)}
-                            >
-                                {task.completed ? "Undo" : "Complete"}
-                            </button> */}
+              {editingIndex === index ? (
+                <button
+                  className="save-btn"
+                  onClick={() => handleSaveEdit(index)}
+                >
+                  Save
+                </button>
+              ) : (
+                <button
+                  className="edit-btn"
+                  onClick={() => handleEditTask(index)}
+                >
+                  Edit
+                </button>
+              )}
               <button
-                className="favorite-btn"
-                onClick={() => handleToggleFavorite(index)} // Toggle favorite
-                style={{
-                  animation: task.favorite ? "blink 1s infinite" : "none",
-                }} // Blinking effect
+                className="important-btn"
+                onClick={() => handleToggleComplete(index)}
               >
-                ⭐
+                {task.completed ? "Undo" : "Complete"}
               </button>
-              {/* <button
-                                className="delete-btn"
-                                onClick={() => handleDeleteTask(index)}
-                            >
-                                Delete
-                            </button> */}
+              <button
+                className="delete-btn"
+                onClick={() => handleDeleteTask(index)}
+              >
+                Delete
+              </button>
             </div>
           </li>
         ))}
@@ -143,4 +138,4 @@ function TodayTask() {
   );
 }
 
-export default TodayTask;
+export default TaskList;
